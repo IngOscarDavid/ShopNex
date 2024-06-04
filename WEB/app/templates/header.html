@@ -1,0 +1,91 @@
+
+<!-- Modal Para Iniciar Session-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesion</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('Login') }}" autocomplete="on" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Correo</label>
+                        <input type="email" class="form-control" placeholder="name@example.com" name="Correo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Iniciar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Para Registrarce -->
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registror De Informacion</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('Registrar') }}" autocomplete="off" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-control"  name="Nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Correo</label>
+                        <input type="email" class="form-control"  placeholder="name@example.com" name="Correo">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Identificacion</label>
+                        <input type="text" class="form-control" name="Id">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contraseña</label>
+                        <input type="text" class="form-control" name="password">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Dirección</label>
+                        <input type="text" class="form-control" name="Direccion">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="encabezado">
+    <nav>
+        <div class="Log">
+            <a href="/Inicio">Inicio</a>
+        </div>
+        <div class="page">
+            <a href="/Inicio" class="a" {% if request.path=="/Inicio" %} class=" activate header" {% endif %}> Inicio </a>
+            <a href="/Tienda" class="a" {% if request.path=="/Tienda" %} class="activate header" {% endif %}> Tienda </a>
+            <a href="/Informacion" class="a" {% if request.path=="/Informacion" %} class="activate header" {% endif %}> Informacion </a>
+            <a href="/Perfil?View=Usuario&K=Perfil" class="a" {% if request.path=="/Informacion" %} class="activate header" {% endif %}> Ir a Perfil </a>
+        </div>
+        <div class="perfil">
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Iniciar Sesion
+            </button>
+            /
+            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#Modal">
+                Registro
+            </button>
+        </div>
+    </nav>
+</div>

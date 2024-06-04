@@ -1,0 +1,41 @@
+<div>
+    <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar De Informacion De Producto</h1>
+    <form action="{{ url_for('EditarProductos', ID=Producto.Codigo) }}" autocomplete="off" method="post">
+        <div class="mb-3">
+            <label class="form-label">Codigo</label>
+            <input type="text" class="form-control" name="Codigo" value="{{Producto.Codigo}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="Nombre" value="{{Producto.Nombre}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripcion</label>
+            <input type="text" class="form-control" name="Descripcion" value="{{Producto.Descripcion}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Catalogo</label>
+            <input type="text" class="form-control" name="Catalogo" value="{{Producto.Catalogo}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <input type="text" class="form-control" name="Precio" value="{{Producto.Precio}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad</label>
+            <input type="text" class="form-control" name="Cantidad" value="{{Producto.Cantidad}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Image</label>
+            <input type="text" class="form-control" name="Image" value="{{Producto.Image}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descuento</label>
+            <input type="text" class="form-control" name="Descuento" value="{{Producto.Descuento}}">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/Perfil?View=Admin&K=Perfil" class="btn btn-secondary"> Cancelar </a>
+        </div>
+    </form>
+</div>

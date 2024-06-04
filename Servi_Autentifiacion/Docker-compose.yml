@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  authentication-db:
+    image: mysql:8.0
+    volumes:
+      - ./DB.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_DATABASE: servicios_autentificacion
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: root
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    container_name: fastapi-db-authentication
+
+  authentication-fastapi:
+    depends_on:
+      - authentication-db
+    environment:
+      DB_HOST: authentication-db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: servicios_autentificacion
+    build:
+      context: ./API/
+      dockerfile: Dockerfile
+    container_name: fastapi-app-authentication
+    volumes:
+      - ./API:/app
+    ports:
+      - "8000:8000"
+    restart: always
+    working_dir: /app

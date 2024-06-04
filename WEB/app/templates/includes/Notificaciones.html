@@ -1,0 +1,23 @@
+<h2>Notificaciones</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Texto</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Notificaciones in data_notificaciones %}
+            <tr>
+                {% if Notificaciones.Estado == "No Visto" and Notificaciones.Codigo_Usuario == "1001" %}
+                    <td>{{ Notificaciones.Texto }}</td>
+                    <td>
+                        <a href="{{ url_for('ConfirmarNotificaciones', ID=Notificaciones.id, Id_Usuario=Notificaciones.Codigo_Usuario) }}">
+                            <i class="bi bi-x-lg" style="color: red;"></i>
+                        </a>
+                    </td>
+                {% endif %}
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>

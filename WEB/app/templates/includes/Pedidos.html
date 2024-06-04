@@ -1,0 +1,19 @@
+<h2>Informacion De Pedidos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Ubicacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Pedidos in Pedido %}
+            <tr>
+                <th scope="row">{{ Pedidos.id }}</th>
+                <td>{{ Pedidos.Estado }}</td>
+                <td>{{ Pedidos.Ubicacion }}</td>
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>

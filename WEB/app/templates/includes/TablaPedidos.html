@@ -1,0 +1,33 @@
+<h2>Pedidos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Metodo Pago</th>
+            <th scope="col">Total Pagar</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Pedidos in data_pedidos %}
+            <tr>
+                <th scope="row">{{ Pedidos.id }}</th>
+                <td>{{ Pedidos.Direccion }}</td>
+                <td>{{ Pedidos.Estado }}</td>
+                <td>{{ Pedidos.Metodo_Pago }}</td>
+                <td>{{ Pedidos.Total_Pagar }}</td>
+                <td style="display: flex; gap: 10px;">
+                    <a href="{{ url_for('ConfirmarPedido', ID=Pedidos.id) }}">
+                        <i class="bi bi-check-circle" style="color: green;"></i>
+                    </a>
+                    :
+                    <a href="{{ url_for('EliminarPedido', ID=Pedidos.id) }}">
+                        <i class="bi bi-trash" style="color: red;"></i>
+                    </a>
+                </td>
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>

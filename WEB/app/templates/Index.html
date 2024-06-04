@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='perfil.css')}}">
+</head>
+<body>
+    {% include "header.html" %}
+    {% if request.args.get('data_productos') == 'N:A' %}
+        <h1>Error</h1>
+    {% endif %}
+    <div class="contenedor-index">
+        {%for item in data_productos %}
+            <div class="box-index">
+                <div class="box-product-index">
+                    <div class="box-product-result-index">
+                        <label><b>Imagen:</b></label><br/>
+                        <img class="Img" id="Imagen" width="350" src="{{item.Image}}" alt="{{item.Descripcion}}"/>
+                    </div>
+                </div>
+                <div class="box-product-index">
+                    <div class="box-product-index-box">
+                        <label><strong>Nombre: </strong>{{item.Nombre}}</label>
+                        <label><strong>Precio: </strong>${{item.Precio}}</label>
+                        {% if item.Descuento != "0" %}
+                            <label><strong>Descuento: </strong>{{item.Descuento}}%</label>
+                        {% endif %}
+                        <label><strong>Descripcion: </strong>{{item.Descripcion}}</label>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

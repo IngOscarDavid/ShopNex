@@ -1,0 +1,29 @@
+<h2>Prodcutos Añadidos A Su Carrito</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Car in Carrito %}
+            <tr>
+                {% if Car.Codigo_Usuario == '1001' %}
+                    <th scope="row">{{ Car.id }}</th>
+                    <td>{{ Car.Nombre }}</td>
+                    <td>{{ Car.Codigo_Producto }}</td>
+                    <td>{{ Car.Precio }}</td>
+                    <td>
+                        <a href="{{ url_for('QuitarProducto', ID=Car.id) }}">
+                            <i class="bi bi-trash" style="color: red;"></i>
+                        </a>
+                    </td>
+                {% endif %}
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>

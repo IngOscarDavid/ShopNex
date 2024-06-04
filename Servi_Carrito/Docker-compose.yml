@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  db-carritos:
+    image: mysql:8.0
+    volumes:
+      - ./DB.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_DATABASE: servicios_carrito
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: root
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3308:3306"
+    container_name: db-carritos
+
+  fastapi-carritos:
+    depends_on:
+      - db-carritos
+    environment:
+      DB_HOST: db-carritos
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: servicios_carrito
+    build:
+      context: ./API/
+      dockerfile: Dockerfile
+    container_name: fastapi-carritos
+    volumes:
+      - ./:/API/
+    ports:
+      - "8003:8000"
+    restart: always

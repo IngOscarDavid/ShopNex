@@ -1,0 +1,18 @@
+<div>
+    <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Notificaciones</h1>
+    <br>
+    <form action="{{ url_for('CrearNotificaciones')}}" autocomplete="off" method="post">
+        <div class="mb-3">
+            <label class="form-label">Codigo Usuario (Opcional, en caso de enviar a un solo usuario)</label>
+            <input type="text" class="form-control" name="Codigo">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Texto</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="Texto" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+    </form>
+</div>

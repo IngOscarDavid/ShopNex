@@ -1,0 +1,37 @@
+<h2>Productos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Catalogo</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Descuento</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for Producto in data_productos %}
+            <tr>
+                <th scope="row">{{ Producto.Codigo }}</th>
+                <td>{{ Producto.Nombre }}</td>
+                <td class="col-2 text-truncate" style="max-width: 150px;">{{ Producto.Descripcion }}</td>
+                <td>{{ Producto.Catalogo }}</td>
+                <td>{{ Producto.Precio }}</td>
+                <td>{{ Producto.Cantidad }}</td>
+                <td>{{ Producto.Descuento }}</td>
+                <td style="display: flex; gap: 10px;">
+                    <a href="{{ url_for('BuscarProducto', ID=Producto.id) }}">
+                        <i class="bi bi-arrow-repeat" style="color: orange;"></i>
+                    </a>
+                    :
+                    <a href="{{ url_for('EliminarProducto', ID=Producto.id) }}">
+                        <i class="bi bi-trash" style="color: red;"></i>
+                    </a>
+                </td>
+            </tr>    
+        {% endfor %}
+    </tbody>
+</table>
